@@ -15,18 +15,18 @@ export default function Footer() {
           <div className="col-2">
             <ul className="list-unstyled">
               <li>
-                <a className={styles.footerlink} href="/">
-                  Example Link
+                <a className={styles.footerlink} href="https://www.patreon.com/andiqu">
+                  Donate to Me
                 </a>
               </li>
               <li>
-                <a className={styles.footerlink} href="/">
-                  Example Link
+                <a className={styles.footerlink} href="https://en.wikipedia.org/wiki/Bowl">
+                  More About Bowls
                 </a>
               </li>
               <li>
-                <a className={styles.footerlink} href="/">
-                  Example Link
+                <a className={styles.footerlink} href="https://www.ikea.com/gb/en/cat/bowls-18864">
+                  Even More Bowls
                 </a>
               </li>
             </ul>

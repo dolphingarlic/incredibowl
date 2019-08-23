@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import BowlList from "./components/BowlList";
 
 //TODO Web Template Studio: Add routes for your new pages here.
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
         <NavBar />
         <Switch>
         </Switch>
+        <BowlList />
         <Footer />
       </React.Fragment>
     );
