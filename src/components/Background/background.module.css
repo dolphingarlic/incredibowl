@@ -1,0 +1,27 @@
+.Container {
+    height: 100%;
+}
+
+.BackgroundImage {
+    background: url("https://i.pinimg.com/originals/8d/50/3a/8d503ae94e0f831f558f9aff83a8f93f.jpg");
+
+    height: 100vh;
+
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.BackgroundText {
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    padding: 20px;
+    text-align: center;
+}

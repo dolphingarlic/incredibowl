@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import BowlList from "./components/BowlList";
+import Background from "./components/Background";
 
 //TODO Web Template Studio: Add routes for your new pages here.
 class App extends Component {
@@ -12,8 +13,9 @@ class App extends Component {
       <React.Fragment>
         <NavBar />
         <Switch>
+          <Route exact path="/" component={Background} />
+          <Route path="/bowls" component={BowlList} />
         </Switch>
-        <BowlList />
         <Footer />
       </React.Fragment>
     );
