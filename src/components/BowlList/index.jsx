@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import "./bowllist.module.css";
+import styles from "./bowllist.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { Card } from "react-bootstrap";
 
 class BowlList extends Component {
     constructor() {
@@ -14,15 +17,20 @@ class BowlList extends Component {
         .then((response) => response.json())
         .then((data) => {
             let bowls = data.map((bowl) => {
+                let rating;
+                if (bowl.ratings_cnt === 0) rating = "N/A";
+                else rating = Math.round(bowl.ratings_sum / bowl.ratings_cnt * 10) / 10;
+
                 return (
-                    <div className="card" style={{width: '20rem'}}>
-                        <img className="card-img-top" src={bowl.image} alt={bowl.name}/>
-                        <div className="card-body">
-                            <h5 className="card-title">{bowl.name}</h5>
-                            <h6 className="card-subtitle mb-2 text-muted">{bowl.style}</h6>
-                            <p className="card-text">{bowl.description}</p>
-                        </div>
-                    </div>
+                    <Card style={{width: "20rem", margin: "1rem"}}>
+                        <Card.Img variant="top" className={styles.CardImage} src={bowl.image} alt={bowl.name}/>
+                        <Card.Body style={{background: "#eee"}}>
+                            <Card.Title>{bowl.name}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">{bowl.style}</Card.Subtitle>
+                            <p><FontAwesomeIcon icon={faStar} className={styles.Star} /> - {rating}</p>
+                            <Card.Text>{bowl.description}</Card.Text>
+                        </Card.Body>
+                    </Card>
                 )
             });
 

@@ -1,0 +1,10 @@
+.CardImage {
+    height: 12rem;
+    object-fit: cover;
+}
+
+.Star {
+    color: #FFD700;
+    stroke: #333;
+    stroke-width: 10;
+}
