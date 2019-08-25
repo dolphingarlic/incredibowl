@@ -25,4 +25,5 @@ router.register(r'bowls', views.BowlViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('random_bowl/', views.RandomBowl.as_view(), name='random-bowl')
 ]
