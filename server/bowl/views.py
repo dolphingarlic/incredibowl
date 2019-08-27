@@ -45,11 +45,9 @@ class BowlViewSet(viewsets.ModelViewSet):
     serializer_class = BowlSerializer
 
 
-class RandomBowl(generics.ListAPIView):
+class BowlDetailView(generics.RetrieveAPIView):
     """
-    API endpoint that returns a random bowl
+    API endpoint that returns details about a specific bowl
     """
     serializer_class = BowlSerializer
-
-    def get_queryset(self):
-        return [choice(Bowl.objects.all())]
+    queryset = Bowl.objects.all()

@@ -12,7 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('token_auth/', obtain_jwt_token),
     path('', include(router.urls)),
-    path('random_bowl/', views.RandomBowl.as_view(), name='random-bowl'),
     path('current_user/', views.current_user),
     path('users/', views.UserList.as_view(), name='users'),
+    path('bowl/<int:pk>', views.BowlDetailView.as_view()),
 ]

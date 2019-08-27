@@ -7,7 +7,8 @@ from django.contrib.auth.models import User
 class BowlSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bowl
-        fields = ('name', 'style', 'ratings_cnt', 'ratings_sum', 'description', 'image', 'user', 'post_date')
+        fields = ('name', 'style', 'ratings_cnt', 'ratings_sum',
+                  'description', 'image', 'user', 'post_date', 'pk')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -41,4 +42,3 @@ class UserSerializerWithToken(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('token', 'username', 'password')
-        
