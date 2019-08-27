@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import styles from "./login.module.css";
+import styles from "./signup.module.css";
 import PropTypes from 'prop-types';
 
-class Login extends Component {
+class Signup extends Component {
     constructor(props) {
         super(props);
 
@@ -25,7 +25,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div className={styles.Login}>
+            <div className={styles.Signup}>
                 <form onSubmit={e => this.props.handleLogin(e, this.state)}>
                     <FormGroup controlId="username" bsSize="large">
                         <FormLabel>Username</FormLabel>
@@ -50,7 +50,7 @@ class Login extends Component {
                         disabled={!this.validateForm()}
                         type="submit"
                     >
-                        Login
+                        Sign Up
                     </Button>
                 </form>
             </div>
@@ -58,8 +58,8 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default Signup;
 
-Login.propTypes = {
+Signup.propTypes = {
     handleLogin: PropTypes.func.isRequired
 };
