@@ -33,11 +33,11 @@ export default function NavBar(props) {
                     Incredibowl
                 </Link>
                 <div className="navbar-nav mr-auto">
-                    <Link className="nav-link" to="/rate">
-                        View a random bowl
+                    <Link className="nav-link" to="/random">
+                        Random bowl
                     </Link>
                     <Link className="nav-link" to="/bowls">
-                        View all bowls
+                        All bowls
                     </Link>
                 </div>
                 {props.logged_in ? logged_in : logged_out}

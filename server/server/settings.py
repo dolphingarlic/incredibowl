@@ -125,9 +125,9 @@ STATIC_URL = '/static/'
 
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #     'rest_framework.permissions.IsAuthenticated',
-    # ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
@@ -136,7 +136,7 @@ REST_FRAMEWORK = {
 }
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
+    'http://localhost:3001',
 )
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
@@ -144,5 +144,4 @@ CORS_ALLOW_CREDENTIALS = True
 
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'server.utils.jwt_response_handler',
-    'JWT_AUTH_HEADER_PREFIX': 'token',
 }

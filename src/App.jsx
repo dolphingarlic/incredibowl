@@ -1,5 +1,5 @@
 ﻿import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 
 import NavBar from "./components/NavBar";
@@ -8,6 +8,7 @@ import BowlList from "./components/BowlList";
 import Background from "./components/Background";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import ViewBowl from "./components/ViewBowl"
 
 class App extends Component {
     constructor(props) {
@@ -34,7 +35,7 @@ class App extends Component {
 
     handleLogin = (e, data) => {
         e.preventDefault();
-        fetch("http://localhost:3000/token_auth/", {
+        fetch("http://localhost:3001/token_auth/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -48,12 +49,14 @@ class App extends Component {
                     logged_in: true,
                     username: json.user.username,
                 });
+            }).catch(() => {
+                alert("Invalid credentials");
             });
     };
 
     handleSignup = (e, data) => {
         e.preventDefault();
-        fetch("http://localhost:3000/users/", {
+        fetch("http://localhost:3001/users/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -67,6 +70,8 @@ class App extends Component {
                     logged_in: true,
                     username: json.username,
                 });
+            }).catch((e) => {
+                alert(e);
             });
     };
 
@@ -86,8 +91,8 @@ class App extends Component {
                     <Route exact path="/" component={Background} />
                     <Route path="/bowls" component={BowlList} />
                     <Route path="/bowl/:bowlId" component={ViewBowl} />
-                    <Route path="/login" component={() => <Login handleLogin={this.handleLogin} />} />
-                    <Route path="/signup" render={() => <Signup handleSignup={this.handleSignup} />} />
+                    <Route path="/login" component={(props) => <Login handleLogin={this.handleLogin} {...props} />} />
+                    <Route path="/signup" component={(props) => <Signup handleSignup={this.handleSignup} {...props} />} />
                 </Switch>
                 <Footer />
             </React.Fragment>

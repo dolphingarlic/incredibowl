@@ -26,7 +26,11 @@ class Login extends Component {
     render() {
         return (
             <div className={styles.Login}>
-                <form onSubmit={e => this.props.handleLogin(e, this.state)}>
+                <form onSubmit={e => {
+                        this.props.handleLogin(e, this.state);
+                        this.props.history.push("/");
+                    }
+                    }>
                     <FormGroup controlId="username" bsSize="large">
                         <FormLabel>Username</FormLabel>
                         <FormControl

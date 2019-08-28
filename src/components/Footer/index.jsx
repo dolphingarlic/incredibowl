@@ -27,7 +27,7 @@ export default function Footer() {
                                     className={styles.footerlink}
                                     href="https://en.wikipedia.org/wiki/Bowl"
                                 >
-                                    About Bowls
+                                    About
                                 </a>
                             </li>
                             <li>
@@ -35,7 +35,7 @@ export default function Footer() {
                                     className={styles.footerlink}
                                     href="https://www.ikea.com/gb/en/cat/bowls-18864"
                                 >
-                                    More Bowls
+                                    More
                                 </a>
                             </li>
                         </ul>

@@ -6,6 +6,7 @@ from rest_framework import viewsets, generics, permissions, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny
 
 from .serializers import BowlSerializer, UserSerializer, UserSerializerWithToken
 from .models import Bowl
@@ -41,6 +42,9 @@ class BowlViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows bowls to be viewed or edited.
     """
+    
+    permission_classes = [AllowAny]
+    
     queryset = Bowl.objects.all()
     serializer_class = BowlSerializer
 
@@ -49,5 +53,8 @@ class BowlDetailView(generics.RetrieveAPIView):
     """
     API endpoint that returns details about a specific bowl
     """
+    
+    permission_classes = [AllowAny]
+    
     serializer_class = BowlSerializer
     queryset = Bowl.objects.all()

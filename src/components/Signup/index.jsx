@@ -9,12 +9,17 @@ class Signup extends Component {
 
         this.state = {
             username: "",
+            first_name: "",
+            last_name: "",
             password: "",
         };
     }
 
     validateForm() {
-        return this.state.username.length > 0 && this.state.password.length > 0;
+        return this.state.username.length > 0 &&
+               this.state.first_name.length > 0 &&
+               this.state.last_name.length > 0 &&
+               this.state.password.length > 0;
     }
 
     handleChange = event => {
@@ -26,12 +31,33 @@ class Signup extends Component {
     render() {
         return (
             <div className={styles.Signup}>
-                <form onSubmit={e => this.props.handleLogin(e, this.state)}>
+                <form onSubmit={e => {
+                        this.props.handleSignup(e, this.state);
+                        this.props.history.push("/");
+                    }
+                }>
                     <FormGroup controlId="username" bsSize="large">
                         <FormLabel>Username</FormLabel>
                         <FormControl
                             autoFocus
                             value={this.state.username}
+                            onChange={this.handleChange}
+                            type="text"
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="first_name" bsSize="large">
+                        <FormLabel>First Name</FormLabel>
+                        <FormControl
+                            autoFocus
+                            value={this.state.first_name}
+                            onChange={this.handleChange}
+                            type="text"
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="last_name" bsSize="large">
+                        <FormLabel>Last Name</FormLabel>
+                        <FormControl
+                            value={this.state.last_name}
                             onChange={this.handleChange}
                             type="text"
                         />
@@ -61,5 +87,5 @@ class Signup extends Component {
 export default Signup;
 
 Signup.propTypes = {
-    handleLogin: PropTypes.func.isRequired
+    handleSignup: PropTypes.func.isRequired
 };

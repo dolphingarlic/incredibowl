@@ -1,0 +1,42 @@
+.Container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    padding: 1rem;
+}
+
+.Star {
+    color: #FFD700;
+    stroke: #333;
+    stroke-width: 10;
+}
+
+.Image {
+    width: 50vw;
+    height: 35vw;
+    overflow: hidden;
+    object-fit: cover;
+    position: relative;
+}
+
+.Image img {
+    max-width: 100%;
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+}
+
+.Detail {
+    padding: 1rem;
+}
+
+@media (max-width: 800px) {
+    .Image {
+        width: 100vw;
+        height: 70vw;
+        align-content: center;
+    }
+}
