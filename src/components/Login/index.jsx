@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import styles from "./login.module.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class Login extends Component {
     constructor(props) {
@@ -26,11 +26,12 @@ class Login extends Component {
     render() {
         return (
             <div className={styles.Login}>
-                <form onSubmit={e => {
+                <form
+                    onSubmit={e => {
                         this.props.handleLogin(e, this.state);
                         this.props.history.push("/");
-                    }
-                    }>
+                    }}
+                >
                     <FormGroup controlId="username" bsSize="large">
                         <FormLabel>Username</FormLabel>
                         <FormControl
@@ -65,5 +66,5 @@ class Login extends Component {
 export default Login;
 
 Login.propTypes = {
-    handleLogin: PropTypes.func.isRequired
+    handleLogin: PropTypes.func.isRequired,
 };

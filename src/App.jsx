@@ -2,13 +2,14 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
-import BowlList from "./components/BowlList";
 import Background from "./components/Background";
+import BowlList from "./components/BowlList";
+import Footer from "./components/Footer";
 import Login from "./components/Login";
+import NavBar from "./components/NavBar";
+import Random from "./components/Random";
 import Signup from "./components/Signup";
-import ViewBowl from "./components/ViewBowl"
+import ViewBowl from "./components/ViewBowl";
 
 class App extends Component {
     constructor(props) {
@@ -49,7 +50,8 @@ class App extends Component {
                     logged_in: true,
                     username: json.user.username,
                 });
-            }).catch(() => {
+            })
+            .catch(() => {
                 alert("Invalid credentials");
             });
     };
@@ -70,8 +72,9 @@ class App extends Component {
                     logged_in: true,
                     username: json.username,
                 });
-            }).catch((e) => {
-                alert(e);
+            })
+            .catch(() => {
+                alert("Invalid data");
             });
     };
 
@@ -91,8 +94,19 @@ class App extends Component {
                     <Route exact path="/" component={Background} />
                     <Route path="/bowls" component={BowlList} />
                     <Route path="/bowl/:bowlId" component={ViewBowl} />
-                    <Route path="/login" component={(props) => <Login handleLogin={this.handleLogin} {...props} />} />
-                    <Route path="/signup" component={(props) => <Signup handleSignup={this.handleSignup} {...props} />} />
+                    <Route path="/random" component={Random} />
+                    <Route
+                        path="/login"
+                        component={props => (
+                            <Login handleLogin={this.handleLogin} {...props} />
+                        )}
+                    />
+                    <Route
+                        path="/signup"
+                        component={props => (
+                            <Signup handleSignup={this.handleSignup} {...props} />
+                        )}
+                    />
                 </Switch>
                 <Footer />
             </React.Fragment>

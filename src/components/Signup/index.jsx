@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import styles from "./signup.module.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class Signup extends Component {
     constructor(props) {
@@ -16,10 +16,12 @@ class Signup extends Component {
     }
 
     validateForm() {
-        return this.state.username.length > 0 &&
-               this.state.first_name.length > 0 &&
-               this.state.last_name.length > 0 &&
-               this.state.password.length > 0;
+        return (
+            this.state.username.length > 0 &&
+            this.state.first_name.length > 0 &&
+            this.state.last_name.length > 0 &&
+            this.state.password.length > 0
+        );
     }
 
     handleChange = event => {
@@ -31,11 +33,12 @@ class Signup extends Component {
     render() {
         return (
             <div className={styles.Signup}>
-                <form onSubmit={e => {
+                <form
+                    onSubmit={e => {
                         this.props.handleSignup(e, this.state);
                         this.props.history.push("/");
-                    }
-                }>
+                    }}
+                >
                     <FormGroup controlId="username" bsSize="large">
                         <FormLabel>Username</FormLabel>
                         <FormControl
@@ -87,5 +90,5 @@ class Signup extends Component {
 export default Signup;
 
 Signup.propTypes = {
-    handleSignup: PropTypes.func.isRequired
+    handleSignup: PropTypes.func.isRequired,
 };

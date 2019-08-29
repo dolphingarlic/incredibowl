@@ -28,7 +28,7 @@ export default function NavBar(props) {
             <div className={styles.skipLink}>
                 <a href="#mainContent">Skip to Main Content</a>
             </div>
-            <nav className="navbar navbar-expand-sm navbar-light border-bottom justify-content-between">
+            <nav className="navbar navbar-expand-sm navbar-dark bg-dark border-bottom justify-content-between">
                 <Link className="navbar-brand" to="/">
                     Incredibowl
                 </Link>
@@ -39,6 +39,13 @@ export default function NavBar(props) {
                     <Link className="nav-link" to="/bowls">
                         All bowls
                     </Link>
+                    {props.logged_in ? (
+                        <Link className="nav-link" to="/add">
+                            Add bowls
+                        </Link>
+                    ) : (
+                        <React.Fragment />
+                    )}
                 </div>
                 {props.logged_in ? logged_in : logged_out}
             </nav>

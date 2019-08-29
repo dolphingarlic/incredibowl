@@ -35,7 +35,11 @@ class BowlList extends Component {
                                 alt={bowl.name}
                             />
                             <Card.Body style={{ background: "#eee" }}>
-                                <Card.Title><Link to={`bowl/${bowl.pk}`}>{bowl.name}</Link></Card.Title>
+                                <Card.Title>
+                                    <Link to={`bowl/${bowl.pk}`}>
+                                        {bowl.name}
+                                    </Link>
+                                </Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">
                                     {bowl.style}
                                 </Card.Subtitle>
@@ -54,7 +58,7 @@ class BowlList extends Component {
 
                 this.setState({ bowls: bowls });
             })
-            .catch((e) => {
+            .catch(e => {
                 let msg = (
                     <h1 className={styles.ErrorMsg}>An error occurred :C</h1>
                 );

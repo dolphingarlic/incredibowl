@@ -6,7 +6,7 @@ from rest_framework import viewsets, generics, permissions, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 
 from .serializers import BowlSerializer, UserSerializer, UserSerializerWithToken
 from .models import Bowl
@@ -17,6 +17,8 @@ def current_user(request):
     """
     Determine the current user by their token, and return their data
     """
+        
+    permission_classes = (IsAuthenticated,)
 
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
@@ -27,8 +29,6 @@ class UserList(APIView):
     Create a new user. It's called 'UserList' because normally we'd have a get
     method here too, for retrieving a list of all User objects.
     """
-
-    permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
         serializer = UserSerializerWithToken(data=request.data)
@@ -42,9 +42,7 @@ class BowlViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows bowls to be viewed or edited.
     """
-    
-    permission_classes = [AllowAny]
-    
+
     queryset = Bowl.objects.all()
     serializer_class = BowlSerializer
 
@@ -54,7 +52,15 @@ class BowlDetailView(generics.RetrieveAPIView):
     API endpoint that returns details about a specific bowl
     """
     
-    permission_classes = [AllowAny]
-    
     serializer_class = BowlSerializer
     queryset = Bowl.objects.all()
+
+
+@api_view(['GET'])
+def random_bowl(request):
+    """
+    Returns the PK of a random bowl
+    """
+    
+    data = {'pk': choice(Bowl.objects.all()).pk}
+    return Response(data)

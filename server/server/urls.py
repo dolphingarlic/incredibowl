@@ -15,4 +15,5 @@ urlpatterns = [
     path('current_user/', views.current_user),
     path('users/', views.UserList.as_view(), name='users'),
     path('bowl/<int:pk>', views.BowlDetailView.as_view()),
+    path('random_bowl/', views.random_bowl),
 ]
