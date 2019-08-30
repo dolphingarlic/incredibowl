@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'ngrok.io',
+    'incredibowl.herokuapp.com'
 ]
 
 
@@ -150,3 +151,7 @@ CORS_ALLOW_CREDENTIALS = True
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'server.utils.jwt_response_handler',
 }
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
