@@ -8,6 +8,7 @@ export default function Background() {
         "Remarkabowl",
         "Appreciabowl",
         "Considerabowl",
+        "Adorabowl",
     ];
     return (
         <React.Fragment>

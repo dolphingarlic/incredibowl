@@ -9,6 +9,7 @@ class Bowl(models.Model):
     
     image = models.URLField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=50, default="")
     post_date = models.DateField(auto_now=True)
     
     ratings_cnt = models.IntegerField(default=0)

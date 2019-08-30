@@ -1,0 +1,10 @@
+@media all and (min-width: 480px) {
+    .AddBowl {
+        padding: 60px 0;
+    }
+
+    .AddBowl form {
+        margin: 0 auto;
+        max-width: 320px;
+    }
+}

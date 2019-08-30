@@ -28,7 +28,7 @@ class Signup extends Component {
         this.setState({
             [event.target.id]: event.target.value,
         });
-    };
+    }
 
     render() {
         return (
@@ -51,7 +51,6 @@ class Signup extends Component {
                     <FormGroup controlId="first_name" bsSize="large">
                         <FormLabel>First Name</FormLabel>
                         <FormControl
-                            autoFocus
                             value={this.state.first_name}
                             onChange={this.handleChange}
                             type="text"

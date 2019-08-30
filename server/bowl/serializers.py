@@ -5,10 +5,17 @@ from django.contrib.auth.models import User
 
 
 class BowlSerializer(serializers.ModelSerializer):
+    
+    def create(self, validated_data):
+        username = validated_data.pop('username')
+        user = User.objects.get(username=username)
+        instance = self.Meta.model.objects.create(user=user, **validated_data)
+        return instance
+    
     class Meta:
         model = Bowl
         fields = ('name', 'style', 'ratings_cnt', 'ratings_sum',
-                  'description', 'image', 'user', 'post_date', 'pk')
+                  'description', 'image', 'username', 'post_date', 'pk')
 
 
 class UserSerializer(serializers.ModelSerializer):

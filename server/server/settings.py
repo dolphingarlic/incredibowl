@@ -26,8 +26,9 @@ SECRET_KEY = 'ugffx02iuqu&_h2+!nl^k*%k5b(-k=-1=k*4_3&r8zh!)e5^dy'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    r'localhost:[0-9]{4}',
-    r'.{8}.ngrok.io',
+    'localhost',
+    '127.0.0.1',
+    'ngrok.io',
 ]
 
 
@@ -148,5 +149,4 @@ CORS_ALLOW_CREDENTIALS = True
 
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'server.utils.jwt_response_handler',
-    'JWT_AUTH_HEADER_PREFIX': 'Token',
 }

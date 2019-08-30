@@ -2,6 +2,7 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 
+import AddBowl from "./components/AddBowl";
 import Background from "./components/Background";
 import BowlList from "./components/BowlList";
 import Footer from "./components/Footer";
@@ -24,8 +25,8 @@ class App extends Component {
         if (this.state.logged_in) {
             fetch("http://localhost:3001/current_user/", {
                 headers: {
-                    Authorization: `JWT ${localStorage.getItem("token")}`,
-                },
+                    Authorization: `JWT ${localStorage.getItem('token')}`
+                }
             })
                 .then(res => res.json())
                 .then(json => {
@@ -92,6 +93,12 @@ class App extends Component {
                 />
                 <Switch>
                     <Route exact path="/" component={Background} />
+                    <Route
+                        path="/add"
+                        component={props => (
+                            <AddBowl username={this.state.username} {...props} />
+                        )}
+                    />
                     <Route path="/bowls" component={BowlList} />
                     <Route path="/bowl/:bowlId" component={ViewBowl} />
                     <Route path="/random" component={Random} />
