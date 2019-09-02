@@ -16,7 +16,7 @@ export default function Background() {
         <React.Fragment>
             <div className={styles.BackgroundImage}></div>
             <div className={styles.BackgroundText}>
-                <h1 className="display-1 text-center">
+                <h1 className={styles.Title}>
                     {bowl_puns[Math.floor(Math.random() * bowl_puns.length)]}
                 </h1>
                 <h2 className="text-muted text-center">
