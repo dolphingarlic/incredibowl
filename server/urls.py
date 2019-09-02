@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.cache import never_cache
 
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token
@@ -13,7 +14,7 @@ router.register('', views.BowlViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html')),
+    path('', never_cache(TemplateView.as_view(template_name='index.html'))),
     
     path('token_auth/', obtain_jwt_token),
     path('bowls/', include(router.urls)),
