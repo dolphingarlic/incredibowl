@@ -30,8 +30,8 @@
 }
 
 .Slider {
-    width: 80%;
-    margin: 50px;
+    width: 90%;
+    margin: 2rem 5%;
 }
 
 @media (max-width: 800px) {

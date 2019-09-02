@@ -1,3 +1,7 @@
+.AddBowl {
+    margin: 1rem
+}
+
 @media all and (min-width: 480px) {
     .AddBowl {
         padding: 60px 0;
