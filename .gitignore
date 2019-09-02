@@ -20,6 +20,7 @@ yarn-error.log*
 
 # production
 /server/build
+build
 
 
 # dependencies
