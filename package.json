@@ -24,8 +24,8 @@
   },
   "scripts": {
     "start": "concurrently \"yarn start-frontend || npm run start-frontend\" \"yarn start-backend || npm run start-backend\"",
-    "start-backend": "python3 server/manage.py runserver 3001 || py -3 server/manage.py runserver 3001 || python server/manage.py runserver 3001",
-    "install-requirements": "pip install -r server/requirements.txt",
+    "start-backend": "python3 manage.py runserver 3001 || py -3 manage.py runserver 3001 || python manage.py runserver 3001",
+    "install-requirements": "pip install -r requirements.txt",
     "start-frontend": "react-scripts start",
     "build": "node ./buildScript",
     "test": "react-scripts test",
