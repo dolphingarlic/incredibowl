@@ -1,5 +1,5 @@
 export default function Random(props) {
-    fetch("http://localhost:3001/random_bowl/", {
+    fetch("/random_bowl/", {
         method: "GET",
         mode: "cors",
     })

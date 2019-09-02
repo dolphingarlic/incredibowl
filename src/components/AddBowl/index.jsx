@@ -31,7 +31,7 @@ class AddBowl extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3001/bowls/", {
+        fetch("/bowls/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

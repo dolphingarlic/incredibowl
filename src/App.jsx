@@ -24,7 +24,7 @@ class App extends Component {
 
     componentDidMount() {
         if (this.state.logged_in) {
-            fetch("http://localhost:3001/current_user/", {
+            fetch("/current_user/", {
                 method: "GET",
             })
                 .catch(e => alert(e))
@@ -39,7 +39,7 @@ class App extends Component {
 
     handleLogin = (e, data) => {
         e.preventDefault();
-        fetch("http://localhost:3001/token_auth/", {
+        fetch("/token_auth/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -61,7 +61,7 @@ class App extends Component {
 
     handleSignup = (e, data) => {
         e.preventDefault();
-        fetch("http://localhost:3001/users/", {
+        fetch("/users/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -15,7 +15,7 @@ class ViewBowl extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:3001/bowl/${this.props.match.params.bowlId}`, {
+        fetch(`/bowl/${this.props.match.params.bowlId}`, {
             method: "GET",
             mode: "cors",
         })

@@ -23,7 +23,7 @@ class RateBowl extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:3001/bowl/${this.props.match.params.bowlId}`, { method: "GET", mode: "cors" })
+        fetch(`/bowl/${this.props.match.params.bowlId}`, { method: "GET", mode: "cors" })
             .then(response => response.json())
             .then(data => {
                 this.setState({ bowl: data });
@@ -38,7 +38,7 @@ class RateBowl extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3001/rate_bowl/", {
+        fetch("/rate_bowl/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
