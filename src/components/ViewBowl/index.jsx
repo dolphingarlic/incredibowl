@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styles from "./viewbowl.module.css";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
@@ -13,16 +15,27 @@ class ViewBowl extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.bowlId);
-        fetch(`http://localhost:3001/bowl/${this.props.match.params.bowlId}`, { method: "GET", mode: "cors" })
+        fetch(`http://localhost:3001/bowl/${this.props.match.params.bowlId}`, {
+            method: "GET",
+            mode: "cors",
+        })
             .then(response => response.json())
             .then(data => {
                 this.setState({ bowl: data });
-            })
+            });
     }
 
     render() {
-        if (this.state.bowl === null) return (<React.Fragment />);
+        if (this.state.bowl === null) return <React.Fragment />;
+
+        const rate_button = (
+            <Link
+                className="btn btn-outline-secondary"
+                to={"/rate/" + this.props.match.params.bowlId}
+            >
+                Rate it
+            </Link>
+        );
 
         let rating;
         if (this.state.bowl.ratings_cnt === 0) rating = "N/A";
@@ -46,13 +59,16 @@ class ViewBowl extends Component {
                     <div className={styles.Detail}>
                         <h1 className="display-3">{this.state.bowl.name}</h1>
                         <h2 className="text-muted">{this.state.bowl.style}</h2>
-                        <p>
-                            <FontAwesomeIcon
-                                icon={faStar}
-                                className={styles.Star}
-                            />{" "}
-                            - {rating}
-                        </p>
+                        <div>
+                            <span>
+                                <FontAwesomeIcon
+                                    icon={faStar}
+                                    className={styles.Star}
+                                />{" "}
+                                - {rating}
+                            </span>
+                            <span>{this.props.logged_in ? rate_button : null}</span>
+                        </div>
                         <p>{this.state.bowl.description}</p>
                     </div>
                 </div>
@@ -61,4 +77,8 @@ class ViewBowl extends Component {
     }
 }
 
-export default ViewBowl
+export default ViewBowl;
+
+ViewBowl.propTypes = {
+    logged_in: PropTypes.bool.isRequired,
+};

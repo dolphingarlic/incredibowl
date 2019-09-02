@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
 import Random from "./components/Random";
+import RateBowl from "./components/RateBowl";
 import Signup from "./components/Signup";
 import ViewBowl from "./components/ViewBowl";
 
@@ -24,15 +25,16 @@ class App extends Component {
     componentDidMount() {
         if (this.state.logged_in) {
             fetch("http://localhost:3001/current_user/", {
-                headers: {
-                    Authorization: `JWT ${localStorage.getItem('token')}`
-                }
+                method: "GET",
             })
+                .catch(e => alert(e))
                 .then(res => res.json())
                 .then(json => {
                     this.setState({ username: json.username });
                 });
         }
+
+        if (this.state.username === "") this.setState({ logged_in: false });
     }
 
     handleLogin = (e, data) => {
@@ -96,12 +98,26 @@ class App extends Component {
                     <Route
                         path="/add"
                         component={props => (
-                            <AddBowl username={this.state.username} {...props} />
+                            <AddBowl
+                                username={this.state.username}
+                                {...props}
+                            />
                         )}
                     />
                     <Route path="/bowls" component={BowlList} />
-                    <Route path="/bowl/:bowlId" component={ViewBowl} />
+                    <Route
+                        path="/bowl/:bowlId"
+                        component={props => (
+                            <ViewBowl logged_in={this.state.logged_in} {...props} />
+                        )}
+                    />
                     <Route path="/random" component={Random} />
+                    <Route
+                        path="/rate/:bowlId"
+                        component={props => (
+                            <RateBowl logged_in={this.state.logged_in} {...props} />
+                        )}
+                    />
                     <Route
                         path="/login"
                         component={props => (
@@ -111,7 +127,10 @@ class App extends Component {
                     <Route
                         path="/signup"
                         component={props => (
-                            <Signup handleSignup={this.handleSignup} {...props} />
+                            <Signup
+                                handleSignup={this.handleSignup}
+                                {...props}
+                            />
                         )}
                     />
                 </Switch>

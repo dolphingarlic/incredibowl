@@ -31,7 +31,6 @@ class AddBowl extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(JSON.stringify(this.state));
         fetch("http://localhost:3001/bowls/", {
             method: "POST",
             headers: {
@@ -39,10 +38,6 @@ class AddBowl extends Component {
             },
             body: JSON.stringify(this.state),
         })
-            .then(res => res.json())
-            .then(json => {
-                console.log(json);
-            })
             .catch(() => {
                 alert("Invalid data");
             });

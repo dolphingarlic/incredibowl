@@ -62,3 +62,13 @@ def random_bowl(request):
     
     data = {'pk': choice(Bowl.objects.all()).pk}
     return Response(data)
+
+
+@api_view(['POST'])
+def rate_bowl(request):
+    bowl = Bowl.objects.get(pk=request.data['bowl']['pk'])
+    bowl.ratings_cnt += 1
+    bowl.ratings_sum += request.data['rating']
+    bowl.save()
+    
+    return Response(status=status.HTTP_200_OK)

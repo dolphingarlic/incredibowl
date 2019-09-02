@@ -5,12 +5,6 @@
     padding: 1rem;
 }
 
-.Star {
-    color: #FFD700;
-    stroke: #333;
-    stroke-width: 10;
-}
-
 .Image {
     width: 50vw;
     height: 35vw;
@@ -35,9 +29,9 @@
     width: 45vw;
 }
 
-.Detail span {
-    display: inline-block;
-    margin: 4px;
+.Slider {
+    width: 80%;
+    margin: 50px;
 }
 
 @media (max-width: 800px) {

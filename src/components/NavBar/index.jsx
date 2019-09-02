@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import PropTypes from "prop-types";
+import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./navbar.module.css";
 
@@ -28,27 +29,30 @@ export default function NavBar(props) {
             <div className={styles.skipLink}>
                 <a href="#mainContent">Skip to Main Content</a>
             </div>
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark border-bottom justify-content-between">
+            <Navbar expand="md" bg="dark" variant="dark">
                 <Link className="navbar-brand" to="/">
                     Incredibowl
                 </Link>
-                <div className="navbar-nav mr-auto">
-                    <Link className="nav-link" to="/random">
-                        Random bowl
-                    </Link>
-                    <Link className="nav-link" to="/bowls">
-                        All bowls
-                    </Link>
-                    {props.logged_in ? (
-                        <Link className="nav-link" to="/add">
-                            Add bowls
+                <Navbar.Toggle aria-controls="navbar-nav" />
+                <Navbar.Collapse id="navbar-nav">
+                    <Nav className="mr-auto">
+                        <Link className="nav-link" to="/random">
+                            Random bowl
                         </Link>
-                    ) : (
-                        <React.Fragment />
-                    )}
-                </div>
-                {props.logged_in ? logged_in : logged_out}
-            </nav>
+                        <Link className="nav-link" to="/bowls">
+                            All bowls
+                        </Link>
+                        {props.logged_in ? (
+                            <Link className="nav-link" to="/add">
+                                Add bowls
+                            </Link>
+                        ) : (
+                            <React.Fragment />
+                        )}
+                    </Nav>
+                    {props.logged_in ? logged_in : logged_out}
+                </Navbar.Collapse>
+            </Navbar>
         </React.Fragment>
     );
 }
