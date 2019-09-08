@@ -14,7 +14,7 @@ class BowlList extends Component {
     }
 
     componentDidMount() {
-        fetch("/bowls/", { method: "GET", mode: "cors" })
+        fetch("/api/bowls/", { method: "GET", mode: "cors" })
             .then(response => response.json())
             .then(data => {
                 let bowls = data.map(bowl => {

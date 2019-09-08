@@ -24,7 +24,7 @@ class App extends Component {
 
     componentDidMount() {
         if (this.state.logged_in) {
-            fetch("/current_user/", {
+            fetch("/api/current_user/", {
                 method: "GET",
             })
                 .catch(e => alert(e))
@@ -39,7 +39,7 @@ class App extends Component {
 
     handleLogin = (e, data) => {
         e.preventDefault();
-        fetch("/token_auth/", {
+        fetch("/api/token_auth/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -61,7 +61,7 @@ class App extends Component {
 
     handleSignup = (e, data) => {
         e.preventDefault();
-        fetch("/users/", {
+        fetch("/api/users/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
